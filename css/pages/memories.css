@@ -1,0 +1,924 @@
+/* memories.css — trang chính: Romantic · Dreamy · Cute · Aesthetic */
+.mem-body {
+  background: linear-gradient(180deg, #fff3f8 0%, #fde6f1 28%, #f3e6ff 62%, #ffeaf3 100%);
+  background-attachment: fixed;
+}
+
+/* ---------- Nút nổi ---------- */
+.mem-nav {
+  position: fixed;
+  top: calc(14px + var(--safe-top));
+  right: 14px;
+  z-index: 60;
+}
+
+.mem-nav__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  color: var(--rose-600);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+}
+
+@media (hover: hover) {
+  .mem-nav__pill:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.mem-nav__pill:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 520px) {
+  .mem-nav__pill {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+    font-size: 1.15rem;
+  }
+
+  .mem-nav__pill span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* ---------- Khung chung ---------- */
+.mem {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.sec {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: clamp(56px, 11vw, 110px) var(--gutter) 0;
+}
+
+.sec__title {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+  line-height: 1.15;
+  text-align: center;
+  color: var(--rose-600);
+  margin-bottom: 10px;
+}
+
+.sec__title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 8px;
+  margin: 10px auto 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg%27 viewBox=%270 0 64 8%27><path d=%27M2 4c6-6 10-6 15 0s10 6 15 0 10-6 15 0 8 4 13 0%27 fill=%27none%27 stroke=%27%23ff85ab%27 stroke-width=%272.4%27 stroke-linecap=%27round%27/></svg>") center / contain no-repeat;
+}
+
+.sec__hint {
+  text-align: center;
+  color: var(--ink-mute);
+  font-size: 0.92rem;
+  margin-bottom: 28px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(70px + var(--safe-top)) var(--gutter) 70px;
+}
+
+.hero__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(86vw, 560px);
+  height: min(86vw, 560px);
+  margin: calc(min(86vw, 560px) / -2) 0 0 calc(min(86vw, 560px) / -2);
+  --c: rgba(255, 166, 196, 0.38);
+  filter: blur(34px);
+  animation: beat 3.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--pink-500);
+}
+
+.hero__title {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 12vw, 5.6rem);
+  line-height: 1.12;
+  color: var(--berry);
+  text-shadow: 0 6px 24px rgba(245, 87, 138, 0.25);
+  text-wrap: balance;
+}
+
+.hero__greeting {
+  margin-top: 18px;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5.4vw, 2.3rem);
+  color: var(--rose-600);
+}
+
+.hero__sub {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: calc(26px + var(--safe-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--rose-600);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: transform 0.25s var(--ease-spring);
+}
+
+.hero__scroll i {
+  font-size: 1.3rem;
+  line-height: 1;
+  font-style: normal;
+  animation: floaty 1.6s ease-in-out infinite;
+}
+
+@media (hover: hover) {
+  .hero__scroll:hover {
+    transform: translateX(-50%) translateY(3px);
+  }
+}
+
+/* ---------- Lời nhắn nhủ ---------- */
+.letter {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(30px, 6vw, 56px) clamp(22px, 6vw, 64px);
+  font-size: clamp(1.02rem, 2.2vw, 1.18rem);
+  line-height: 1.95;
+  color: var(--ink);
+}
+
+.letter::before {
+  content: "“";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(255, 133, 171, 0.25);
+  pointer-events: none;
+}
+
+.letter p+p {
+  margin-top: 1.1em;
+}
+
+.letter p:first-child {
+  font-weight: 600;
+  color: var(--rose-600);
+}
+
+.letter .letter__sign {
+  margin-top: 22px;
+  text-align: right;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--berry);
+}
+
+/* ---------- Timeline ---------- */
+.tl {
+  position: relative;
+  margin-top: 34px;
+  padding: 6px 0;
+}
+
+.tl::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 26px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, transparent, var(--pink-300) 8%, var(--lilac-300) 92%, transparent);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 30px 74px;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+.tl-item__dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(255, 173, 200, 0.4), var(--shadow-sm);
+}
+
+.tl-item__card {
+  padding: 18px 20px 20px;
+  border-radius: var(--r-lg);
+}
+
+.tl-item__date {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lilac-400);
+}
+
+.tl-item__title {
+  margin: 2px 0 6px;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: var(--rose-600);
+}
+
+.tl-item__text {
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+@media (min-width: 760px) {
+  .tl::before {
+    left: 50%;
+    margin-left: -1.5px;
+  }
+
+  .tl-item {
+    width: 50%;
+    padding: 0 56px 38px 0;
+  }
+
+  .tl-item:nth-child(even) {
+    margin-left: 50%;
+    padding: 0 0 38px 56px;
+  }
+
+  .tl-item__dot {
+    left: auto;
+    right: -27px;
+  }
+
+  .tl-item:nth-child(even) .tl-item__dot {
+    right: auto;
+    left: -27px;
+  }
+
+  .tl-item:last-child {
+    padding-bottom: 0;
+  }
+
+  html.js .tl-item.reveal {
+    transform: translateX(-34px) scale(0.98);
+  }
+
+  html.js .tl-item:nth-child(even).reveal {
+    transform: translateX(34px) scale(0.98);
+  }
+
+  html.js .tl-item.reveal.is-visible {
+    transform: none;
+  }
+}
+
+/* ---------- 4. Khung 3D Parallax & Heart Formation 63 ảnh ---------- */
+.sec--album-3d {
+  width: min(100%, 1080px);
+}
+
+.mem-3d-box {
+  position: relative;
+  width: 100%;
+  height: clamp(520px, 80vh, 760px);
+  touch-action: none;
+}
+
+.mem-3d-viewport {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mem-3d-viewport:active {
+  cursor: grabbing;
+}
+
+.mem-3d-world {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Thẻ ảnh chân dung */
+.photo-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(100px, 14vw, 140px);
+  height: clamp(130px, 18vw, 180px);
+  margin-left: -50px;
+  margin-top: -65px;
+  border-radius: 13px;
+  padding: 5px 5px 12px 5px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(245, 87, 138, 0.22), 0 3px 8px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+  transition: box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+@media (max-width: 600px) {
+  .photo-card {
+    width: clamp(72px, 20vw, 92px);
+    height: clamp(94px, 26vw, 120px);
+    margin-left: -36px;
+    margin-top: -47px;
+    padding: 4px 4px 8px 4px;
+    border-radius: 10px;
+  }
+}
+
+@media (hover: hover) {
+  .photo-card:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 18px 36px rgba(245, 87, 138, 0.4), 0 0 0 2px var(--pink-400);
+    z-index: 500 !important;
+  }
+}
+
+.photo-card__inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fae4ee;
+  position: relative;
+}
+
+.photo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.photo-card__num {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* Hiệu ứng nhịp đập tim */
+.is-heart-pulsing {
+  animation: heartPulseAnim 2.2s ease-in-out infinite;
+}
+
+@keyframes heartPulseAnim {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.036);
+  }
+}
+
+/* Thiệp tình yêu ở giữa trái tim */
+.mem-heart-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: min(88%, 340px);
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 0 20px 48px rgba(245, 87, 138, 0.35), inset 0 0 0 1.5px rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-spring);
+  z-index: 60;
+}
+
+.mem-heart-card.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.mem-heart-card__icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  --c: linear-gradient(135deg, var(--pink-400), var(--rose-600));
+  animation: beat 1.8s ease-in-out infinite;
+}
+
+.mem-heart-card__title {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--rose-600);
+  margin-bottom: 6px;
+}
+
+.mem-heart-card__msg {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.mem-heart-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.mem-heart-card__actions .btn {
+  width: 100%;
+}
+
+/* Thanh dock tiến trình mini */
+.mem-dock {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(245, 87, 138, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  z-index: 30;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--rose-600);
+}
+
+.mem-dock__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mem-dock__progress-track {
+  width: clamp(70px, 18vw, 120px);
+  height: 6px;
+  border-radius: 99px;
+  background: rgba(245, 87, 138, 0.18);
+  overflow: hidden;
+}
+
+.mem-dock__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--grad-btn);
+  border-radius: 99px;
+  transition: width 0.1s linear;
+}
+
+.mem-dock__label {
+  min-width: 36px;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.76rem;
+}
+
+.mem-dock__skip-btn {
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: var(--grad-btn);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(245, 87, 138, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.mem-dock__skip-btn:hover {
+  transform: scale(1.05);
+}
+
+.mem-dock__skip-btn:active {
+  transform: scale(0.95);
+}
+
+/* ---------- 5. Phong thư bí mật ---------- */
+.secret {
+  text-align: center;
+}
+
+.env {
+  --w: min(78vw, 300px);
+  position: relative;
+  display: block;
+  width: var(--w);
+  height: calc(var(--w) * 0.64);
+  margin: 40px auto 0;
+  perspective: 900px;
+  border-radius: 12px;
+  filter: drop-shadow(0 18px 24px rgba(161, 36, 79, 0.28));
+  transition: transform 0.35s var(--ease-spring);
+}
+
+@media (hover: hover) {
+  .env:hover {
+    transform: translateY(-4px) rotate(-1.5deg);
+  }
+}
+
+.env__back,
+.env__front,
+.env__flap,
+.env__paper {
+  position: absolute;
+  display: block;
+}
+
+.env__back {
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #ffb7d0, #f78fb3);
+}
+
+.env__paper {
+  left: 8%;
+  right: 8%;
+  top: 6%;
+  bottom: 6%;
+  border-radius: 10px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.7s var(--ease-out) 0.25s;
+  z-index: 1;
+}
+
+.env__paper .heart-shape {
+  width: 46px;
+  height: 46px;
+  --c: #ffc2d6;
+}
+
+.env__front {
+  inset: 0;
+  border-radius: 12px;
+  z-index: 2;
+  background:
+    linear-gradient(to top right, transparent 49.5%, rgba(255, 255, 255, 0.35) 50%) left bottom / 50% 100% no-repeat,
+    linear-gradient(to top left, transparent 49.5%, rgba(255, 255, 255, 0.35) 50%) right bottom / 50% 100% no-repeat,
+    linear-gradient(160deg, #ffc4d8, #ff9bbb);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+}
+
+.env__flap {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 56%;
+  background: linear-gradient(180deg, #ff9bbb, #ffb3cc);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: 50% 0;
+  transition: transform 0.6s var(--ease-out), z-index 0s 0.3s;
+  z-index: 4;
+  border-radius: 12px 12px 0 0;
+}
+
+.env__seal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -34px 0 0 -23px;
+  --c: #e23a6e;
+  z-index: 5;
+  filter: drop-shadow(0 4px 6px rgba(120, 10, 50, 0.35));
+  animation: beat 1.8s ease-in-out infinite;
+  transition: opacity 0.3s, transform 0.4s;
+}
+
+.env.is-open .env__flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.env.is-open .env__paper {
+  transform: translateY(-46%);
+}
+
+.env.is-open .env__seal {
+  opacity: 0;
+  transform: scale(0.2);
+  animation: none;
+}
+
+.note {
+  display: grid;
+  grid-template-rows: 0fr;
+  max-width: 560px;
+  margin: 0 auto;
+  transition: grid-template-rows 0.7s var(--ease-out), margin 0.7s var(--ease-out);
+}
+
+.note__inner {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 clamp(22px, 5vw, 38px);
+  opacity: 0;
+  border-width: 0;
+  transition: opacity 0.5s 0.15s, padding 0.7s var(--ease-out);
+}
+
+.note.is-open {
+  grid-template-rows: 1fr;
+  margin-top: 30px;
+}
+
+.note.is-open .note__inner {
+  padding: clamp(24px, 5vw, 36px);
+  opacity: 1;
+  border-width: 1px;
+}
+
+.note__title {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--rose-600);
+  margin-bottom: 10px;
+}
+
+.note__text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--ink);
+  min-height: 4em;
+}
+
+.note__text .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--pink-500);
+  animation: caretBlink 0.8s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- 6. CTA ---------- */
+.cta {
+  padding-bottom: calc(80px + var(--safe-bottom));
+  text-align: center;
+}
+
+.cta__card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 40px clamp(22px, 6vw, 40px) 36px;
+}
+
+.cta__heart {
+  width: 64px;
+  height: 64px;
+  margin: -72px auto 12px;
+  --c: var(--pink-400);
+  filter: drop-shadow(0 10px 16px rgba(245, 87, 138, 0.45));
+  animation: beat 1.6s ease-in-out infinite;
+}
+
+.cta__text {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  line-height: 1.3;
+  color: var(--rose-600);
+  margin-bottom: 22px;
+  text-wrap: balance;
+}
+
+.cta__replay {
+  margin-top: 26px;
+  font-size: 0.88rem;
+}
+
+.cta__replay a {
+  color: var(--ink-mute);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.cta__replay a:hover {
+  color: var(--rose-600);
+}
+
+/* ---------- Lightbox xem ảnh lớn ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 10, 20, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__frame {
+  position: relative;
+  max-width: min(92vw, 680px);
+  max-height: min(88vh, 800px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox__media {
+  max-width: 100%;
+  max-height: 72vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  background: #000;
+}
+
+.lightbox__media img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.lightbox__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1.6rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.lightbox__btn:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox__btn--prev {
+  left: -56px;
+}
+
+.lightbox__btn--next {
+  right: -56px;
+}
+
+@media (max-width: 680px) {
+  .lightbox__btn--prev {
+    left: 8px;
+  }
+
+  .lightbox__btn--next {
+    right: 8px;
+  }
+}
+
+.lightbox__caption {
+  margin-top: 12px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}

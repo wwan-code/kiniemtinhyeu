@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi" data-page="question" data-stage="1">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffeaf3">
+  <title>Một câu hỏi nhỏ · Gửi em, người anh thương</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>💖</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/love-question.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/navigation.js"></script>
+</head>
+<body>
+  <div class="bg-scene" data-hearts="16" data-twinkles="14" aria-hidden="true">
+    <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+  </div>
+
+  <main class="page">
+    <section class="lq" aria-labelledby="lq-title">
+      <div class="lq-mascot enter" style="--i:0" id="lq-mascot" aria-hidden="true">🥰</div>
+      <p class="lq-bubble" id="lq-bubble" role="status" aria-live="polite"></p>
+
+      <p class="eyebrow enter" style="--i:1" id="lq-eyebrow"></p>
+      <h1 class="title-xl lq-title enter" style="--i:2" id="lq-title"></h1>
+
+      <div class="lq-actions enter" style="--i:3" id="lq-actions">
+        <button class="btn btn--lg lq-yes" type="button" id="lq-yes"></button>
+        <button class="btn btn--ghost lq-no" type="button" id="lq-no"></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="curtain" aria-hidden="true"><i class="heart-shape"></i></div>
+
+  <script src="../js/effects.js"></script>
+  <script src="../js/love-question.js"></script>
+</body>
+</html>

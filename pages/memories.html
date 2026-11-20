@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi" data-page="memories" data-stage="4">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffeaf3">
+  <title>Những Kỷ Niệm · Gửi em, người anh thương</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>💖</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Quicksand:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/memories.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/navigation.js"></script>
+</head>
+
+<body class="mem-body" data-cursor-trail>
+  <div class="bg-scene" data-hearts="22" data-twinkles="24" aria-hidden="true">
+    <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+  </div>
+
+  <!-- Nút nổi: sang Love Days -->
+  <nav class="mem-nav" aria-label="Điều hướng">
+    <a class="mem-nav__pill" id="mem-nav-days" href="love-days.html" data-go="loveDays">💞 <span>Love Days</span></a>
+  </nav>
+
+  <main class="mem">
+
+    <!-- 1. Hero / lời chào -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <i class="hero__glow heart-shape" aria-hidden="true"></i>
+      <p class="hero__eyebrow enter" style="--i:0" id="hero-eyebrow"></p>
+      <h1 class="hero__title enter" style="--i:1" id="hero-title"></h1>
+      <p class="hero__greeting enter" style="--i:2" id="hero-greeting"></p>
+      <p class="hero__sub enter" style="--i:3" id="hero-sub"></p>
+      <a class="hero__scroll" style="--i:4" href="#letter" id="hero-scroll">
+        <span id="hero-scroll-text"></span>
+        <i aria-hidden="true">⌄</i>
+      </a>
+    </section>
+
+    <!-- 2. Lời nhắn nhủ -->
+    <section class="sec" id="letter" aria-labelledby="letter-title">
+      <h2 class="sec__title reveal" id="letter-title"></h2>
+      <article class="letter glass-card reveal" id="letter-card"></article>
+    </section>
+
+    <!-- 3. Kỷ niệm / timeline -->
+    <section class="sec" id="timeline" aria-labelledby="timeline-title">
+      <h2 class="sec__title reveal" id="timeline-title"></h2>
+      <ol class="tl" id="tl"></ol>
+    </section>
+
+    <!-- 4. Album 3D Parallax & Xếp Trái Tim 63 ảnh -->
+    <section class="sec sec--album-3d" id="album" aria-labelledby="album-title">
+      <h2 class="sec__title reveal" id="album-title"></h2>
+      <p class="sec__hint reveal" id="album-hint"></p>
+
+      <!-- Khung không gian 3D tương tác -->
+      <div class="mem-3d-box reveal" id="mem-3d-box">
+        <!-- Viewport 3D -->
+        <div class="mem-3d-viewport" id="mem-viewport" role="region" aria-label="Không gian 3D kỷ niệm">
+          <div class="mem-3d-world" id="mem-world">
+            <!-- 63 thẻ ảnh sẽ được JS render tại đây -->
+          </div>
+        </div>
+
+        <!-- Thiệp tình yêu ở giữa trái tim khi hoàn thành -->
+        <div class="mem-heart-card glass-card" id="mem-heart-card" role="dialog" aria-hidden="true">
+          <div class="mem-heart-card__icon heart-shape" aria-hidden="true"></div>
+          <h3 class="mem-heart-card__title script" id="heart-card-title">Gửi Vợ Iu Của Anh ❤️</h3>
+          <p class="mem-heart-card__msg" id="heart-card-msg">
+            Mỗi bức ảnh là một mảnh ghép tình yêu của chúng ta. Cảm ơn em đã xuất hiện và cùng anh tạo nên những kỷ niệm
+            tuyệt vời nhất!
+          </p>
+          <div class="mem-heart-card__actions">
+            <a class="btn btn--lg btn--glow" id="heart-card-cta" href="love-days.html" data-go="loveDays">Xem Love Days
+              💞</a>
+            <button class="btn btn--ghost" id="heart-replay-btn" type="button">↺ Xem lại kỷ niệm</button>
+          </div>
+        </div>
+
+        <!-- Thanh điều khiển & Tiến trình dưới chân khung 3D -->
+        <div class="mem-dock" id="mem-dock">
+          <div class="mem-dock__bar">
+            <div class="mem-dock__progress-track">
+              <div class="mem-dock__progress-fill" id="dock-fill"></div>
+            </div>
+            <span class="mem-dock__label" id="dock-label">0%</span>
+          </div>
+          <button class="mem-dock__skip-btn" id="dock-skip-btn" type="button" title="Nhảy nhanh đến Trái Tim">
+            💖 Xếp Trái Tim
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Thông điệp bí mật -->
+    <section class="sec secret" id="secret" aria-labelledby="secret-title">
+      <h2 class="sec__title reveal" id="secret-title"></h2>
+      <p class="sec__hint reveal" id="secret-hint"></p>
+      <button class="env reveal" type="button" id="env" aria-expanded="false" aria-controls="secret-note"
+        aria-label="Mở phong thư bí mật">
+        <span class="env__back"></span>
+        <span class="env__paper" aria-hidden="true"><i class="heart-shape"></i></span>
+        <span class="env__front"></span>
+        <span class="env__flap"></span>
+        <span class="env__seal heart-shape" aria-hidden="true"></span>
+      </button>
+      <div class="note" id="secret-note" role="region" aria-live="polite">
+        <div class="note__inner glass-card">
+          <h3 class="note__title script" id="secret-note-title"></h3>
+          <p class="note__text" id="secret-note-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CTA -->
+    <section class="sec cta" id="cta">
+      <div class="cta__card glass-card reveal">
+        <div class="cta__heart heart-shape" aria-hidden="true"></div>
+        <p class="cta__text" id="cta-text"></p>
+        <a class="btn btn--lg btn--glow" id="cta-btn" href="love-days.html" data-go="loveDays"></a>
+      </div>
+      <p class="cta__replay"><a href="login.html?reset=1" id="replay">↺ Xem lại hành trình từ đầu</a></p>
+    </section>
+  </main>
+
+  <!-- Lightbox phóng to từng ảnh khi click -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh" aria-hidden="true">
+    <div class="lightbox__frame">
+      <button class="lightbox__close" type="button" id="lb-close" aria-label="Đóng">✕</button>
+      <button class="lightbox__btn lightbox__btn--prev" type="button" id="lb-prev" aria-label="Ảnh trước">‹</button>
+      <div class="lightbox__media" id="lb-media"></div>
+      <button class="lightbox__btn lightbox__btn--next" type="button" id="lb-next" aria-label="Ảnh sau">›</button>
+      <p class="lightbox__caption" id="lb-caption"></p>
+    </div>
+  </div>
+
+  <div class="curtain" aria-hidden="true"><i class="heart-shape"></i></div>
+
+  <script src="../js/effects.js"></script>
+  <script src="../js/memories.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi" data-page="love-days" data-stage="4">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6e0f0">
+  <title>Love Days · Gửi em, người anh thương</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>💖</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/love-days.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/navigation.js"></script>
+</head>
+
+<body class="ldays-body">
+  <div class="bg-scene" data-hearts="12" data-twinkles="18" aria-hidden="true">
+    <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+  </div>
+
+  <main class="page">
+    <section class="days" aria-labelledby="days-title">
+      <h1 class="days__title enter" style="--i:0" id="days-title"></h1>
+
+      <!-- Thẻ đếm chính -->
+      <div class="days__pill enter" style="--i:1" id="days-pill" role="timer" aria-live="off">
+        <span class="days__count" id="days-count"><b id="d-total">0</b> <span id="d-total-label">DAYS</span></span>
+        <span class="days__clock" id="days-clock" aria-label="Thời gian trong ngày">00:00:00</span>
+      </div>
+
+      <!-- Hai avatar + trái tim -->
+      <div class="days__couple enter" style="--i:2">
+        <figure class="avatar" id="avatar-her">
+          <div class="avatar__img" id="avatar-her-img"></div>
+          <figcaption id="avatar-her-name"></figcaption>
+        </figure>
+        <div class="days__mid">
+          <i class="heart-shape days__heart" aria-hidden="true"></i>
+          <time class="days__start" id="days-start"></time>
+        </div>
+        <figure class="avatar" id="avatar-him">
+          <div class="avatar__img" id="avatar-him-img"></div>
+          <figcaption id="avatar-him-name"></figcaption>
+        </figure>
+      </div>
+
+      <!-- Chi tiết: tháng / ngày / giờ / phút / giây -->
+      <ul class="units enter" style="--i:3" id="units" aria-label="Chi tiết thời gian yêu nhau">
+        <li class="unit"><b id="u-months">0</b><span>Tháng</span></li>
+        <li class="unit"><b id="u-days">0</b><span>Ngày</span></li>
+        <li class="unit"><b id="u-hours">00</b><span>Giờ</span></li>
+        <li class="unit"><b id="u-minutes">00</b><span>Phút</span></li>
+        <li class="unit"><b id="u-seconds">00</b><span>Giây</span></li>
+      </ul>
+
+      <!-- Khung video kỷ niệm (thay thế trình phát nhạc) -->
+      <div class="video-card enter" style="--i:4" id="video-card" hidden>
+        <div class="video-card__box" id="video-box" role="region" aria-label="Video kỷ niệm">
+          <video id="video-player" class="video-card__video" autoplay loop muted playsinline webkit-playsinline
+            preload="metadata">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+          </video>
+          <div class="video-card__overlay">
+            <div class="video-card__actions">
+              <button class="video-act-btn" type="button" id="video-sound-btn" aria-label="Bật/Tắt âm thanh"
+                title="Chạm để bật/tắt tiếng">
+                <span id="sound-icon">🔇</span>
+              </button>
+              <button class="video-act-btn" type="button" id="video-fs-btn" aria-label="Xem toàn màn hình"
+                title="Phóng to toàn màn hình">
+                <span>⛶</span>
+              </button>
+            </div>
+            <div class="video-card__tap-hint" id="video-tap-hint">Chạm để nghe tiếng 🎵</div>
+          </div>
+        </div>
+        <p class="video-card__title" id="video-title"></p>
+      </div>
+
+      <p class="days__thanks enter" style="--i:5" id="days-thanks"></p>
+
+      <a class="btn btn--ghost days__back enter" style="--i:6" id="days-back" href="memories.html"
+        data-go="memories"></a>
+    </section>
+  </main>
+
+  <div class="curtain" aria-hidden="true"><i class="heart-shape"></i></div>
+
+  <script src="../js/effects.js"></script>
+  <script src="../js/love-days.js"></script>
+</body>
+
+</html>

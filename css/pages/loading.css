@@ -1,0 +1,152 @@
+/* loading.css — lấy cảm hứng từ thanh "LOADING LOVE" với trái tim cắm que */
+.ld-body { background: linear-gradient(170deg, #ffdfe9 0%, #ffe6ef 45%, #f6e4ff 100%); background-attachment: fixed; }
+
+.ld {
+  --coral: #ff7f86;
+  --coral-deep: #f0626b;
+  --outline: #4a2a3a;
+  width: min(92vw, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------- Track ---------- */
+.ld-track { position: relative; width: 100%; padding-top: 78px; }
+
+.ld-bar {
+  position: relative;
+  height: 44px;
+  background: #fff;
+  border: 3px solid var(--outline);
+  border-radius: 4px;
+  box-shadow: 0 8px 0 rgba(74, 42, 58, 0.08), 0 14px 30px rgba(240, 98, 107, 0.25);
+  overflow: hidden;
+}
+.ld-bar__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.18) 0 12px, rgba(255, 255, 255, 0) 12px 24px),
+    var(--coral);
+  background-size: 48px 100%, auto;
+  animation: stripes 1.2s linear infinite;
+}
+@keyframes stripes { to { background-position: 48px 0, 0 0; } }
+
+.ld-bar__text {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0;
+  width: var(--bar-w, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--outline);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.ld-bar__text--on { color: #fff; text-shadow: 0 1px 0 rgba(160, 40, 60, 0.35); }
+
+/* ---------- Trái tim cắm que ---------- */
+.ld-balloon {
+  position: absolute;
+  top: 6px;
+  left: var(--at);
+  width: 44px; height: 55px;
+  margin-left: -22px;
+  transform-origin: 50% 100%;
+  transform: scale(0.85);
+  transition: transform 0.5s var(--ease-spring);
+  filter: drop-shadow(0 3px 0 rgba(74, 42, 58, 0.12));
+  z-index: 3;
+}
+.ld-balloon svg { width: 100%; height: 100%; overflow: visible; }
+.ld-balloon.is-active { transform: scale(1.15); animation: balloonBob 1.4s ease-in-out infinite; }
+.ld-balloon.is-big { transform: scale(1.35); }
+@keyframes balloonBob {
+  0%, 100% { transform: scale(1.15) rotate(-5deg); }
+  50%      { transform: scale(1.25) rotate(5deg); }
+}
+
+/* ---------- Bong bóng "like" chạy theo tiến trình ---------- */
+.ld-like {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 40px; height: 38px;
+  margin-left: -20px;
+  border-radius: 10px;
+  background: var(--coral);
+  box-shadow: 0 6px 14px rgba(240, 98, 107, 0.4);
+  display: grid; place-items: center;
+  transform: translateX(calc(var(--bar-w, 380px) * var(--p, 0)));
+  transition: transform 0.2s linear;
+  z-index: 4;
+  animation: likeBob 1.3s ease-in-out infinite;
+}
+.ld-like::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 50%;
+  width: 12px; height: 12px;
+  margin-left: -6px;
+  background: var(--coral);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+.ld-like svg { width: 22px; height: 22px; position: relative; z-index: 1; }
+@keyframes likeBob { 0%, 100% { margin-top: 0; } 50% { margin-top: -7px; } }
+.ld.is-done .ld-like { transform: translateX(calc(var(--bar-w, 380px) * 0.96 + 12px)) translateY(-18px) scale(0.9); transition: transform 0.7s var(--ease-spring); }
+
+/* ---------- Chữ ---------- */
+.ld-label {
+  margin-top: 26px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  color: var(--coral-deep);
+}
+.ld-dots i { display: inline-block; font-style: normal; animation: dotJump 1.2s ease-in-out infinite; }
+.ld-dots i:nth-child(2) { animation-delay: 0.15s; }
+.ld-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dotJump { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-5px); opacity: 1; } }
+.ld.is-done .ld-dots { display: none; }
+
+.ld-message {
+  margin-top: 8px;
+  min-height: 3em;
+  max-width: 30ch;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  transition: opacity 0.35s;
+}
+.ld-message.is-swapping { opacity: 0; }
+
+/* ---------- Nút Click Me ---------- */
+.ld-cta {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  animation: popIn 0.6s var(--ease-spring) both;
+}
+.ld-cta[hidden] { display: none; }
+.ld-hand {
+  font-size: 2rem;
+  animation: handTap 0.9s ease-in-out infinite;
+  filter: drop-shadow(0 3px 4px rgba(74, 42, 58, 0.25));
+}
+@keyframes handTap { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+.ld-click { background: linear-gradient(135deg, #ff8f95, #f0626b); min-width: 180px; }
+
+@media (max-width: 380px) {
+  .ld-track { padding-top: 70px; }
+  .ld-balloon { width: 38px; height: 48px; margin-left: -19px; }
+}
